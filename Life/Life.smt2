@@ -21,17 +21,19 @@
 
 (define-fun born ((p PERSON)) Bool (not (member p (union male female))))
 (define-fun die ((p PERSON)) Bool (member p (union male female)))
+;(assert (not ( = male (as emptyset (Set PERSON)))))
+;(assert (not ( = female (as emptyset (Set PERSON)))))
 (check-sat)
 (get-value (male female))
 
 
 ;Marriage
 
-; Como fazer injeção parcial?
 ;(declare-fun marriage (male) female); mapeia um male para um female. faz sentido? aqui male é só um membro e não um subconjunto
-;(assert (forall () ) )
 (declare-fun domMarriage () (Set PERSON)); domínio do marriage
 (assert (subset domMarriage male))
+(declare-fun imgMarriage () (Set PERSON))
+(assert (subset imgMarriage female))
 (declare-fun marriage (PERSON) PERSON); consigo especificar que ele é (domMale) para female aqui?
 (assert
   (forall((a PERSON)(b PERSON))
@@ -47,5 +49,33 @@
       );se eles não resultam igual, sei lá, qualquer coisa vale
       true
     );se não pertencem ao domínio qualquer coisa vale
+  )
+)
+
+;wed
+(define-fun wed ((mm PERSON)(ff PERSON)) Bool (
+  and (member mm male)
+      (not (member mm domMarriage))
+      (member ff female)
+      (not (member ff imgMarriage))
+  ))
+
+;part
+(define-fun part ((mm PERSON)(ff PERSON)) Bool (
+  and (member mm male)
+      (member ff female)
+      (= (marriage mm) ff); se eles são casados
+  ))
+
+;eachchoice_c1b2
+
+;marriage : male >+> female já foi definido, é aquele assert enorme
+(declare-fun testm () (Set PERSON)); essa variável não tinha o tipo bem definido
+(declare-fun testf () (Set PERSON))
+(assert (
+  and(not (= testm male));not(mm : male)
+     (not (member testm domMarriage))
+     (= testf female)
+     (not (member testf imgMarriage))
   )
 )
