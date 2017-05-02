@@ -72,10 +72,19 @@
 ;marriage : male >+> female já foi definido, é aquele assert enorme
 (declare-fun testm () (Set PERSON)); essa variável não tinha o tipo bem definido
 (declare-fun testf () (Set PERSON))
-(assert (
-  and(not (= testm male));not(mm : male)
-     (not (member testm domMarriage))
+(assert (and (not (= testm male));not(mm : male)
+     (not (subset testm domMarriage))
      (= testf female)
-     (not (member testf imgMarriage))
-  )
+     (not (subset testf imgMarriage))
+     )
+)
+
+;eachchoice_c2b2
+(declare-fun testm () (Set PERSON)); essa variável não tinha o tipo bem definido
+(declare-fun testf () (Set PERSON))
+(assert (and (= testm male);not(mm : male)
+     (subset testm domMarriage)
+     (= testf female)
+     (not (subset testf imgMarriage))
+     )
 )
