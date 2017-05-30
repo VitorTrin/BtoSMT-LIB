@@ -1,0 +1,70 @@
+Nome: CVC4
+
+Site: http://cvc4.cs.stanford.edu/
+
+Teorias Suportadas: Equality over free (aka uninterpreted) function and predicate symbols, real and integer linear arithmetic, bit-vectors, arrays, tuples, records, user-defined inductive datatypes, strings, finite sets, separation logic
+
+Documentação: Boa para API, necessário o uso da CVC3 na linguagem própria, terceriza parte da documentação SMT-LIB
+
+Em desenvolvimento: sim, múltiplos commits diários
+
+Retorna casos que satisfazem: sim. Logo após um retorno instatisfatível o comando COUNTEREXAMPLE. (CVC4 deve ser iniciado com -m)
+
+Última versão estável (1.4) não suporta univset
+
+Usado por: Rodin
+
+Outro: ainda em cvc3, o solver que conseguiu provar mais obrigações de prova em comparação com z3 e alt-ergo
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Nome: {log}
+
+Site: http://people.dmi.unipr.it/gianfranco.rossi/setlog.Home.html
+
+Teorias Suportadas: Set TODO
+
+Documentação: Possui exemplos TODO
+
+Em desemvolvimento: último update 01/17 no beta, último estável 04/2016
+
+Retorna casos que satisfazem: TODO
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Nome: Z3
+
+Site: https://github.com/Z3Prover/z3
+
+Teorias Suportadas: uninterpreted funcitions, arrays, bitvectors, bitvectors arrays, reals, ints, difference logic over integers, nonlinear, quantifiers. Em Descriptores SMT: AUFLIA, AUFLIRA, AUFNIRA, LRA, QF_ABV, QF_AUFBV, QF_UFBV, QF_AUFLIA, QF_AX, QF_BV, QF_IDL, QF_RDL, QF_LIA, QF_LRA, QF_NIA, QF_NRA, QF_UF, QF_UFID, QF_UFLIA, QF_UFLRA, QF_UFNRA, UFLRA, UFNIA, UFBV, QF_S, QF_FD. Não suporta sets.
+
+Licença: MIT
+
+Documentação: https://github.com/Z3Prover/z3/wiki#background
+
+Em desenvolvimento: múltiplos commits diários, última versão estável lançada em 7/11/2016
+
+Retorna casos que satisfazem: Sim, supporta get-value
+
+Usado por: Rodin
+
+Outros: No artigo de SMTpp, é mais eficiente que o Alt-Ergo
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Nome: Alt-Ergo
+
+Site: http://alt-ergo.lri.fr/
+
+Teorias Suportadas: todas de SMT-LIB 2.0
+
+Licença:
+
+Documentação:
+
+Em desenvolvimento:
+
+Retorna casos que satisfazem:
+
+Usado por: Atelier-B, Rodin
