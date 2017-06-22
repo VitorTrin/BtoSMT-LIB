@@ -1,19 +1,30 @@
 1- Lista de critérios a serem avaliados
 
-    Teorias Suportadas- O solver tem de ser capaz de lidar com todas as teorias envolvidas no teste. Uma teoria em especial e muito relevante é a teoria de conjuntos
+    TODO: Mais detalhes
 
-    Documentação- Quanto melhor a documentação, mais fácil a interação com o solver
+    Teorias Suportadas- O solver tem de ser capaz de lidar com todas as teorias envolvidas no teste. Uma teoria em especial e muito relevante é a teoria de conjuntos.
 
-    Licença- A licença precisa permitir esse tipo de uso
+    Documentação- Quanto melhor a documentação, mais fácil a interação com o solver.
 
-    Em desenvolvimento- Aplicações em desenvolvimento são capazes de melhorar
+    Licença- A licença precisa permitir esse tipo de uso.
 
-    Retorna casos que satisfazem- Ponto principal para o nosso uso. Sem o retorno dos casos que satisfazem, sem utilidade
+    Em desenvolvimento- Aplicações em desenvolvimento são capazes de melhorar.
 
+    Retorna casos que satisfazem- Ponto principal para o nosso uso. Sem o retorno dos casos que satisfazem, sem utilidade.
+
+    Usado por ferramentas de B- Indica que a compatibilidade com B já foi alcançada.
+
+    Tamanho da base de usuários- Solvers com base de usuários maiores possuem menos chances de serem abandonados e tendem a se desenvolver mais rápido.
+
+    Possui API e sua linguagem- Beta pode se comunicar com ele de modo transparente para o usuário.
+
+    Linguagem de entrada- Modo de entrada padrão
 
 2- Ferramentas a serem analisadas
 
-    CVC4-  http://cvc4.cs.stanford.edu/
+    TODO: Mais detalhes
+
+    CVC4- Projeto em conjunto da University of Iowa e a New York University, seu antecessor mais antigo, o SVC, é de 1996. Já passou por vários refatoramentos.  http://cvc4.cs.stanford.edu/
 
     Z3- https://github.com/Z3Prover/z3
 
@@ -39,9 +50,13 @@
 
     Retorna casos que satisfazem: sim.
 
-    Usado por: Rodin
+    Usado por ferramentas de B: É usado por Rodin
 
-    Outro: ainda em cvc3, o solver que conseguiu provar mais obrigações de prova em comparação com z3 e alt-ergo
+    Tamanho da base de usuários: a página da wiki lista GPUVerify e Stardust como projetos de terceiros que usam CVC4. Mais de 20 perguntas com a tag CVC4 no stackoverflow. 148 estrelas no repositório do github.
+
+    Possui API e sua linguagem: Possui uma API em C++
+
+    Linguagem de entrada: Possui uma linguagem própria e aceita SMT-LIB
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -57,6 +72,14 @@
 
     Retorna casos que satisfazem: Sem informação por enquanto
 
+    Usado por ferramentas de B: Nenhuma conhecida
+
+    Tamanho da base de usuários: Nenhuma conhecida
+
+    Possui API e sua linguagem: Nenhuma conhecida
+
+    Linguagem de entrada: Baseada em Prolog
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
     Nome: Z3
@@ -67,13 +90,19 @@
 
     Licença: MIT
 
-    Documentação: https://github.com/Z3Prover/z3/wiki#background
+    Documentação: Documentação simples da API, tutorial introdutório de como usar em SMT-LIB bem detalhado, teoria por teoria https://github.com/Z3Prover/z3/wiki/Documentation
 
     Em desenvolvimento: múltiplos commits diários, última versão estável lançada em 7/11/2016
 
     Retorna casos que satisfazem: Sim, supporta get-value
 
-    Usado por: Rodin
+    Usado por ferramentas de B: Usado por Rodin
+
+    Tamanho da base de usuários: mais de 1600 perguntas com  tag z3 no stackoverflow, mais de 2,200 estrelas no github
+
+    Possui API e sua linguagem: C, C#, Java, Python,
+
+    Linguagem de entrada: SMT-LIB
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -87,8 +116,36 @@
 
     Documentação: https://github.com/OcamlPro/alt-ergo/blob/master/INSTALL.md, muito voltada para instalação e funcionamento interno
 
-    Em desenvolvimento: Última release estável 21/2016, sem commits desde então
+    Em desenvolvimento: Última release estável 21/11/2016, sem commits desde então
 
     Retorna casos que satisfazem: (não testado)
 
-    Usado por: Atelier-B, Rodin
+    Usado por ferramentas de B: Atelier-B, Rodin
+
+    Tamanho da base de usuários: mas de 20 estrelas no github, usado na plataforma Why3
+
+    Possui API e sua linguagem:
+
+    Linguagem de entrada: Linguagem Prória
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    Nome: ProB
+
+    Site:https://www3.hhu.de/stups/prob/index.php/Main_Page
+
+    Teorias Suportadas:
+
+    Licença:
+
+    Documentação:
+
+    Em desenvolvimento:
+
+    Retorna casos que satisfazem:
+
+    Tamanho da base de usuários:
+
+    Possui API e sua linguagem:
+
+    Liguagem de entrada:
