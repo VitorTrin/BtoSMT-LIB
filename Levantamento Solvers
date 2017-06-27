@@ -1,16 +1,14 @@
 1- Lista de critérios a serem avaliados
 
-    TODO: Mais detalhes
-
     Teorias Suportadas- O solver tem de ser capaz de lidar com todas as teorias envolvidas no teste. Uma teoria em especial e muito relevante é a teoria de conjuntos.
 
-    Documentação- Quanto melhor a documentação, mais fácil a interação com o solver.
+    Documentação- Quanto melhor a documentação, mais fácil a interação com o solver. Uma ferramenta com documentação fraca ou incompleta obriga a tentativa e erro.
 
     Licença- A licença precisa permitir esse tipo de uso.
 
-    Em desenvolvimento- Aplicações em desenvolvimento são capazes de melhorar.
+    Em desenvolvimento- Aplicações em desenvolvimento são capazes de melhorar.É possível para sugerir novas melhorias para uma ferramenta em desenvolvimento para melhor atender nossas necessidades
 
-    Retorna casos que satisfazem- Ponto principal para o nosso uso. Sem o retorno dos casos que satisfazem, sem utilidade.
+    Retorna casos que satisfazem- Dizer, dado as restrições do teste, qual o conjunto de valores que satisfazem essas restrições e permitem a avaliação do teste.Ponto principal para o nosso uso. Sem o retorno dos casos que satisfazem, sem utilidade.
 
     Usado por ferramentas de B- Indica que a compatibilidade com B já foi alcançada.
 
@@ -18,19 +16,19 @@
 
     Possui API e sua linguagem- Beta pode se comunicar com ele de modo transparente para o usuário.
 
-    Linguagem de entrada- Modo de entrada padrão
+    Linguagem de entrada- Modo de entrada padrão.
 
 2- Ferramentas a serem analisadas
 
-    TODO: Mais detalhes
-
     CVC4- Projeto em conjunto da University of Iowa e a New York University, seu antecessor mais antigo, o SVC, é de 1996. Já passou por vários refatoramentos.  http://cvc4.cs.stanford.edu/
 
-    Z3- https://github.com/Z3Prover/z3
+    Z3- Solver da Microsoft Research https://github.com/Z3Prover/z3
 
-    Alt-Ergo- http://alt-ergo.lri.fr/
+    Alt-Ergo- Solver criado em conjunto pelos Laboratoire de Recherche en Informatique, Inria Saclay Ile-de-France  e o CNRS, 2006. http://alt-ergo.lri.fr/
 
-    {log}- http://people.dmi.unipr.it/gianfranco.rossi/setlog.Home.html
+    {log}- Uma língua de Constraint Logic Programming baseda em Prolog voltada para manipulação de conjuntos http://people.dmi.unipr.it/gianfranco.rossi/setlog.Home.html
+
+    ProB- Um animador, constraint solver e validador de modelos para B. É a ferramenta em uso atualmente para nosso problema. https://www3.hhu.de/stups/prob/index.php/Main_Page
 
 3- Avaliação dos solvers
 
@@ -134,18 +132,18 @@
 
     Site:https://www3.hhu.de/stups/prob/index.php/Main_Page
 
-    Teorias Suportadas:
+    Teorias Suportadas: Todas de B
 
-    Licença:
+    Licença: EPL v1.0
 
-    Documentação:
+    Documentação: https://www3.hhu.de/stups/prob/index.php/Tutorial, bem extenso e completo
 
-    Em desenvolvimento:
+    Em desenvolvimento: Sim
 
-    Retorna casos que satisfazem:
+    Retorna casos que satisfazem: Sim
 
-    Tamanho da base de usuários:
+    Tamanho da base de usuários: Siemens, Alstom, AtelierB, Rodin
 
-    Possui API e sua linguagem:
+    Possui API e sua linguagem: Sim, Java
 
-    Liguagem de entrada:
+    Liguagem de entrada: B
