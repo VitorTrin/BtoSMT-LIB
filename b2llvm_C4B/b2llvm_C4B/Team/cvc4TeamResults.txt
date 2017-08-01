@@ -1,0 +1,4 @@
+sat
+((Team (union (union (union (union (union (union (union (union (union (union (singleton @uc_PLAYER_0) (singleton @uc_PLAYER_1)) (singleton @uc_PLAYER_2)) (singleton @uc_PLAYER_3)) (singleton @uc_PLAYER_4)) (singleton @uc_PLAYER_5)) (singleton @uc_PLAYER_6)) (singleton @uc_PLAYER_7)) (singleton @uc_PLAYER_8)) (singleton @uc_PLAYER_9)) (singleton @uc_PLAYER_10))))
+unsat
+(error "Cannot get value unless immediately preceded by SAT/INVALID or UNKNOWN response.")

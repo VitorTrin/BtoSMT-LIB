@@ -1,0 +1,15 @@
+"teste 1 de balance"
+sat
+((account_id 1) (account_balance 0))
+"teste 2 de balance"
+unknown
+((account_id 1) (account_balance 0))
+"teste 1 de deposit"
+unknown
+((account_id 1) (account_balance 0))
+"teste 2 de deposit"
+unknown
+((account_id 1) (account_balance 0))
+"teste 1 de withdraw"
+unknown
+((account_id 1) (account_balance 1) (x1 1))
