@@ -1,0 +1,54 @@
+Queremos a partir de uma máquina em B e um teste criar um  código em SMT-LIB que
+me forneça valores válidos para executar o teste.
+
+1- Lógicas utilizadas
+
+    Na primeira linha deve ser especificando quais são as lógicas que serão utilizadas.
+Em geral lógicas menores e mais simples tendem a serem mais rápidas.Como em geral
+não estamos preocupados com velocidade, já que nossos testes são simples, recomendo
+utilizar (set-logic ALL) onde for possível. ALL é do padrão SMT-LIB 2.5, logo apenas
+solvers mais atualizados o suportam. CVC4 suporta, e Z3 o trata como lógica desconhecida,
+na qual ele funciona surpreendentemente bem.
+
+2- Gerar modelo
+
+    A segunda linha especificamos as opções de comando. Para nosso objetivo precisamos
+de (set-option :produce-models true) para forçar o solver a gerar modelos e permite
+o comando (get-model), que retorna todo o modelo, ou (get-value), para o valor de
+varáveis em especial.
+
+3- Invariante
+
+    Os valores para teste só são válidos se atenderem aos invariantes, então começamos
+nosso trabalho pelo invariante e declaração de variáveis da máquina B. Cada linha
+deve ser traduzida em declarações de tipos (declare-sort), declaração de funções
+(declare-fun) ou asserções (assert). Em SMT-LIB, não há diferença entre funções
+e variáveis.
+
+    Exemplo:
+
+    Máquina B:
+    SETS
+      PERSON ;
+
+    O que pode ser entendido como:  Existe o conjunto PERSON e existe o conjunto
+SEX, formado pelos elementos boy e girl
+
+    Como foi traduzido:
+
+    (declare-sort PERSON 0)
+
+    Existe o tipo PERSON com aridade 0
+
+    (declare-fun Person () (Set PERSON));
+
+    Existe a função Person que retorna um conjunto de PERSON, o que é equivalente
+a dizer que Person é um conjunto de PERSON.
+
+3.1- Conjuntos
+
+    Na fase de tradução de variáveis é preciso decidir se será possivel simplificar
+conjuntos por variáveis mais simples. Lógica de conjuntos é algo extremamente
+importante por ser o mais próximo de B que SMT-LIB chega e ser altamente condensada,
+mas por outro lado conjuntos não são definidos no SMT-LIB standard, então o único
+solver que aceita sintaxe de conjuntos como entrada de SMT-LIB é o CVC4.
