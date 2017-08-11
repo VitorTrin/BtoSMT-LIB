@@ -31,32 +31,31 @@ e variáveis.
     SETS
       PERSON ;
 
-    O que pode ser entendido como:  Existe o conjunto PERSON e existe o conjunto
-SEX, formado pelos elementos boy e girl
+    O que pode ser entendido como:  Existe o conjunto PERSON.
 
     Como foi traduzido:
 
     (declare-sort PERSON 0)
 
-    Existe o tipo PERSON com aridade 0
-
-    (declare-fun Person () (Set PERSON));
-
-    Existe a função Person que retorna um conjunto de PERSON, o que é equivalente
-a dizer que Person é um conjunto de PERSON.
+    Existe o tipo PERSON com aridade 0. Para falar do conjunto com todos os
+elementos de tipo PERSON usamos "as univset (Set PERSON)".
 
 	Para descrever funções já definidas, como por exemplo
 
 	Máquina B:
-	male /\ female = {}
+    male <: PERSON &
+    female <: PERSON &
+    male /\ female = {}
 
 	nos utilizamos de asserções
 
 	SMT-LIB:
-	(assert (= (intersection male female) (as emptyset (Set PERSON))))
+    (declare-fun male () (Set PERSON))
+    (declare-fun female () (Set PERSON))
+    (assert (= (intersection male female) (as emptyset (Set PERSON))))
 
-	Essa asserção diz que a interseção entre male e female é igual a um conjunto vazio de 
-elementos PERSON.
+	Essa asserção diz que a interseção entre male e female é igual a um conjunto
+vazio de elementos PERSON.
 
 3.1- Conjuntos
 
@@ -64,18 +63,60 @@ elementos PERSON.
 conjuntos por variáveis mais simples. Lógica de conjuntos é algo extremamente
 importante por ser o mais próximo de B que SMT-LIB chega e ser altamente condensada,
 mas por outro lado conjuntos não são definidos no SMT-LIB standard, então o único
-solver que aceita sintaxe de conjuntos como entrada de SMT-LIB é o CVC4. O SMT-LIB 
-standard usa a lógica de conjuntos para explicar como definir uma nova lógica, e 
+solver que aceita sintaxe de conjuntos como entrada de SMT-LIB é o CVC4. O SMT-LIB
+standard usa a lógica de conjuntos para explicar como definir uma nova lógica, e
 esse exemplo de como seria a lógica é usado por CVC4.
 
-4- Operação
+4- Inicialização
 
-	Como os testes visam testar as operações, é necessário definir as precondições das
-operações.Os efeitos e lógica interna da operação não importam, uma vez que o objetivo 
-é obter os valores válidos para a execução do teste.Um exemplo de operação:
+    A inicialização é ignorada, já que animar a máquina e determinar se o estado que
+retornamos é alcançável não nos interessa.
+
+5- Operação
+
+    Como os testes visam testar as operações, é necessário definir as precondições
+das operações.Os efeitos e lógica interna da operação não importam, uma vez que
+o objetivo é obter os valores válidos para a execução do teste.Um exemplo de
+precondição de uma operação:
 
   OPERATIONS
   die ( nn ) =
     PRE
       nn : PERSON &
       nn : male \/ female
+
+    Existem diversas opções de tradução para operações.
+
+5.1- A tradução mais direta
+
+    (declare-fun die (PERSON) Bool)
+    (assert
+        (forall ((pp PERSON))
+            (=
+                (die pp)
+                (member p (union male female))
+            )
+        )
+    )
+
+    Ou seja, para todos os elementos pp de person, die pp retorna um booleano, e
+o valor desse booleano é o mesmo que a fórmula "pp é membro da união de male com
+female".
+
+5.2- A abreviação
+
+    Esse modelo de declare-fun seguido de um assert com quantificador e = possui
+uma abreviação, o define-fun
+
+    (define-fun die ((pp PERSON)) Bool (member pp (union male female)))
+
+    Um dos objetivos desse abreviação é dar ao solver oportunidade de reconhecer
+facilmente definições de funções e possivelmente processá-los especialmente
+(The SMT-LIB Standard 2.0 pag 91). Em certas ocasiões um declare-fun seguido de
+assert gera uma resposta unknown, enquanto um define-fun gera sat.
+
+5.3- Substituição
+
+    A sintaxe do define-fun pode não ser intuitiva e o declare-fun seguido de
+assert pode gerar incerteza. Como alternativa, é possível simplismente substituir
+cada referência a operação pela sua expressão equivalente.
