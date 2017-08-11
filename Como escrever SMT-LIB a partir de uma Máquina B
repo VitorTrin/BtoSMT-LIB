@@ -45,10 +45,37 @@ SEX, formado pelos elementos boy e girl
     Existe a função Person que retorna um conjunto de PERSON, o que é equivalente
 a dizer que Person é um conjunto de PERSON.
 
+	Para descrever funções já definidas, como por exemplo
+
+	Máquina B:
+	male /\ female = {}
+
+	nos utilizamos de asserções
+
+	SMT-LIB:
+	(assert (= (intersection male female) (as emptyset (Set PERSON))))
+
+	Essa asserção diz que a interseção entre male e female é igual a um conjunto vazio de 
+elementos PERSON.
+
 3.1- Conjuntos
 
     Na fase de tradução de variáveis é preciso decidir se será possivel simplificar
 conjuntos por variáveis mais simples. Lógica de conjuntos é algo extremamente
 importante por ser o mais próximo de B que SMT-LIB chega e ser altamente condensada,
 mas por outro lado conjuntos não são definidos no SMT-LIB standard, então o único
-solver que aceita sintaxe de conjuntos como entrada de SMT-LIB é o CVC4.
+solver que aceita sintaxe de conjuntos como entrada de SMT-LIB é o CVC4. O SMT-LIB 
+standard usa a lógica de conjuntos para explicar como definir uma nova lógica, e 
+esse exemplo de como seria a lógica é usado por CVC4.
+
+4- Operação
+
+	Como os testes visam testar as operações, é necessário definir as precondições das
+operações.Os efeitos e lógica interna da operação não importam, uma vez que o objetivo 
+é obter os valores válidos para a execução do teste.Um exemplo de operação:
+
+  OPERATIONS
+  die ( nn ) =
+    PRE
+      nn : PERSON &
+      nn : male \/ female
