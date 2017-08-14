@@ -59,12 +59,12 @@ vazio de elementos PERSON.
 
 3.1- Conjuntos
 
-    Na fase de tradução de variáveis é preciso decidir se será possivel simplificar
+    Na fase de tradução de variáveis é preciso decidir se será possível simplificar
 conjuntos por variáveis mais simples. Lógica de conjuntos é algo extremamente
-importante por ser o mais próximo de B que SMT-LIB chega e ser altamente condensada,
+importante por ser o mais próximo de B que SMT-LIB chega e por ser altamente condensada,
 mas por outro lado conjuntos não são definidos no SMT-LIB standard, então o único
 solver que aceita sintaxe de conjuntos como entrada de SMT-LIB é o CVC4. O SMT-LIB
-standard usa a lógica de conjuntos para explicar como definir uma nova lógica, e
+standard usa lógica de conjuntos para explicar como definir uma nova lógica, e
 esse exemplo de como seria a lógica é usado por CVC4.
 
 4- Inicialização
@@ -118,5 +118,94 @@ assert gera uma resposta unknown, enquanto um define-fun gera sat.
 5.3- Substituição
 
     A sintaxe do define-fun pode não ser intuitiva e o declare-fun seguido de
-assert pode gerar incerteza. Como alternativa, é possível simplismente substituir
+assert pode gerar incerteza. Como alternativa, é possível simplesmente substituir
 cada referência a operação pela sua expressão equivalente.
+
+6- Os testes
+
+    Definidos os invariantes e as operações a máquina B está toda definida. Agora
+falta definir os testes. Como os testes são independentes entre eles, um jeito
+prático de evitar que os testes interfiram uns nos outros é cercar as linhas de teste
+de (push 1) e (pop 1). O comando (push n) empilha n níveis vazios de asserção na
+pilha de asserção.
+    Exemplo de teste:
+
+    Formula: account_balance >= mm & mm : INT & mm > 0
+
+    SMT-LIB:
+
+    (push 1)
+
+    (declare-fun mm () Int)
+    (assert (>= account_balance mm))
+    (assert (> mm 0))
+
+    (check-sat)
+    (get-value (account_id account_balance x1))
+
+    (pop 1)
+
+    account_id e account_balance já foram definidos na máquina.
+
+    O comando (check-sat) checa se a conjunção de todas as fórmulas no contexto
+atual é satisfatível, retornando sat caso seja satisfatível, unsat caso não seja,
+e unknown se o resultado foi inconclusivo(The SMT-LIB Standard 2.0 pag 64).Neste
+caso, sat significa que existe um conjunto de valores que podem ser utilizados
+para a execução do teste, unsat significa que o teste não possui entradas válidas,
+e unknown deve ser avaliado caso a caso.
+    O comando (get-value (termo)) retorna o valor que esse termo possui no modelo
+atual, e são esses valores que são o objetivo final e serão utilizados para a
+execução do teste. get-value só pode ser executado depois de um (check-sat) e esse
+(check-sat) não pode ter retornado unsat.
+    Para facilitar a identificação de qual retorno é de que teste em uma série
+de testes o comando (echo "string") pode ser utilizado.
+
+6.1- Testes com substituição
+
+    No caso em que a tradução de operações utilizada é a por substituição, os
+usos nos testes devem ser subistituídos um a um
+
+    Exemplo em tradução direta:
+
+    (declare-fun substitute (PLAYER PLAYER) Bool)
+    (assert
+        (forall ((pp PLAYER) (rr PLAYER))
+            (=
+                (substitute pp rr)
+                (and
+                    (member pp Team)
+                    (not(member rr Team))
+                )
+            )
+        )
+    )
+
+    (push 1)
+
+    (declare-fun player1 () PLAYER)
+    (declare-fun player2 () PLAYER)
+
+    (assert (not (member player1 Team)))
+    (assert (not (not (member player2 Team))))
+    (assert (substitute player1 player2))
+
+    (check-sat)
+    (get-value (Team))
+
+    (pop 1)
+
+    se torna, em substituição
+
+    (push 1)
+
+    (declare-fun player1 () PLAYER)
+    (declare-fun player2 () PLAYER)
+
+    (assert (not (member player1 Team)))
+    (assert (not (not (member player2 Team))))
+    (assert (and (member player1 Team) (not (member player2 Team))))
+
+    (check-sat)
+    (get-value (Team))
+
+    (pop 1)
