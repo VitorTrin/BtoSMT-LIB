@@ -1,0 +1,12 @@
+>(set-option :produce-modelstrue)
+>(set-logic QF_LIA)
+>(declare-fun x () Int)
+>(declare-fun y () Int)
+>(assert (= (+ x y) 9))
+>(assert (= (+ (* 2 x) (* 3 y)) 22))
+>(check-sat)
+sat
+>(get-value (x))
+((x 5))
+>(get-value ((- x y) (+ 2 y)))
+(((- x y) 1)((+ 2 y) 8)
