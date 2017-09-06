@@ -1,0 +1,11 @@
+sat
+teste 1 de Count
+sat
+((value (- 255))
+ (underflow false)
+ (overflow false))
+teste 2 de Count
+unsat
+teste 3 de Count
+unsat
+(error "line 93 column 37: model is not available")
