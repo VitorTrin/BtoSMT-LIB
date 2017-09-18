@@ -1,0 +1,10 @@
+sat
+((Team (union (union (union (union (union (union (union (union (union (union (singleton @uc_PLAYER_0) (singleton @uc_PLAYER_1)) (singleton @uc_PLAYER_2)) (singleton @uc_PLAYER_3)) (singleton @uc_PLAYER_4)) (singleton @uc_PLAYER_5)) (singleton @uc_PLAYER_6)) (singleton @uc_PLAYER_7)) (singleton @uc_PLAYER_8)) (singleton @uc_PLAYER_9)) (singleton @uc_PLAYER_10))))
+unknown
+((Team (union (union (union (union (union (union (union (union (union (union (singleton @uc_PLAYER_1) (singleton @uc_PLAYER_2)) (singleton @uc_PLAYER_3)) (singleton @uc_PLAYER_4)) (singleton @uc_PLAYER_5)) (singleton @uc_PLAYER_6)) (singleton @uc_PLAYER_7)) (singleton @uc_PLAYER_8)) (singleton @uc_PLAYER_9)) (singleton @uc_PLAYER_10)) (singleton @uc_PLAYER_11))) (player1 @uc_PLAYER_0) (player2 @uc_PLAYER_1))
+unknown
+((Team (union (union (union (union (union (union (union (union (union (union (singleton @uc_PLAYER_0) (singleton @uc_PLAYER_1)) (singleton @uc_PLAYER_2)) (singleton @uc_PLAYER_3)) (singleton @uc_PLAYER_4)) (singleton @uc_PLAYER_5)) (singleton @uc_PLAYER_6)) (singleton @uc_PLAYER_7)) (singleton @uc_PLAYER_8)) (singleton @uc_PLAYER_9)) (singleton @uc_PLAYER_10))) (player1 @uc_PLAYER_0) (player2 @uc_PLAYER_0))
+unknown
+((Team (union (union (union (union (union (union (union (union (union (union (singleton @uc_PLAYER_2) (singleton @uc_PLAYER_3)) (singleton @uc_PLAYER_4)) (singleton @uc_PLAYER_5)) (singleton @uc_PLAYER_6)) (singleton @uc_PLAYER_7)) (singleton @uc_PLAYER_8)) (singleton @uc_PLAYER_9)) (singleton @uc_PLAYER_10)) (singleton @uc_PLAYER_11)) (singleton @uc_PLAYER_12))) (player1 @uc_PLAYER_0) (player2 @uc_PLAYER_1))
+unknown
+((Team (union (union (union (union (union (union (union (union (union (union (singleton @uc_PLAYER_0) (singleton @uc_PLAYER_2)) (singleton @uc_PLAYER_3)) (singleton @uc_PLAYER_4)) (singleton @uc_PLAYER_5)) (singleton @uc_PLAYER_6)) (singleton @uc_PLAYER_7)) (singleton @uc_PLAYER_8)) (singleton @uc_PLAYER_9)) (singleton @uc_PLAYER_10)) (singleton @uc_PLAYER_11))) (player1 @uc_PLAYER_0) (player2 @uc_PLAYER_1))
